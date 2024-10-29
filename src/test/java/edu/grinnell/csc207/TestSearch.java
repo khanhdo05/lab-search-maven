@@ -14,8 +14,8 @@ import edu.grinnell.csc207.util.SearchUtils;
 /**
  * Tests of our search methods.
  *
- * @author Your Name Here
- * @author Your Name Here
+ * @author Kevin Tang
+ * @author Khanh Do
  * @author Samuel A. Rebelsky
  */
 public class TestSearch {
@@ -125,5 +125,12 @@ public class TestSearch {
     assertBinarySearchFinds(new int[] { 1, 1, 1, 2, 2, 3 }, 2);
     assertBinarySearchFinds(new int[] { 1, 1, 1, 2, 2, 3 }, 3);
   } // testBinarySearchDups()
+
+  @Test
+  void testBinarySearchBigNum() throws Exception {
+    assertBinarySearchFails(new int[] {1000, 2000, 3001, 4005, 5201}, 2630);
+    assertBinarySearchFinds(new int[] { 1000, 2000, 3001, 4005, 5201 }, 4005);
+  } // testBinarySearchDups()
+
 
 } // class TestSearch
