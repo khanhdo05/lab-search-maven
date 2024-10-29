@@ -132,5 +132,26 @@ public class TestSearch {
     assertBinarySearchFinds(new int[] { 1000, 2000, 3001, 4005, 5201 }, 4005);
   } // testBinarySearchDups()
 
+  // For each s from 1 to 32
+  // Create an array of size s, containing the values 0, 2, 4, ... 2*(s-1)
+  // For all i from 0 to s-1, inclusive
+  //     // Make sure that value 2*i is in position i
+  //     assert(binarySearch(2*i, array) == i)
+  //     // Make sure that odd values are not in the array
+  //     assertException(binarySearch(2*i+1, array))
+  // assertException(binarySearch(-1, array))
+
+  @Test
+  void testJonBentley() throws Exception {
+    int array[] = new int [32];
+    for (int i = 0; i < 32; i++) {
+      array[i] = 2*i;
+    }
+    for (int i = 0; i < 32; i++) {
+      assert(SearchUtils.binarySearch(array, 2*i) == i);
+      assertBinarySearchFails(array, 2*i+1);
+    }
+    assertBinarySearchFails(array, -1);
+  }
 
 } // class TestSearch
