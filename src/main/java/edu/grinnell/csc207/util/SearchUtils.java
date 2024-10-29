@@ -12,6 +12,7 @@ import java.util.function.Predicate;
  * @author Samuel A. Rebelsky (starter code)
  */
 public class SearchUtils {
+  public static int countStep=0;
   // +---------+-----------------------------------------------------
   // | Helpers |
   // +---------+
@@ -34,10 +35,12 @@ public class SearchUtils {
    *   values[index] == val
    */
   static int iterativeBinarySearch(int[] vals, int val) throws Exception {
+    countStep = 0;
     int start = 0;
     int end = vals.length - 1;
 
     while (start <= end) {
+      countStep += 1;
       int midIndex = (start + end) / 2;
       int mid = vals[midIndex];
       if (mid == val) {
@@ -70,6 +73,7 @@ public class SearchUtils {
    *   values[index] == val
    */
   static int recursiveBinarySearch(int[] vals, int val) throws Exception {
+    countStep = 0;
     int start = 0;
     int end = vals.length - 1;
     return rbsHelper(vals, start, end, val);
@@ -98,6 +102,7 @@ public class SearchUtils {
    *   values[index] == val
    */
   static int rbsHelper(int[] vals, int lb, int ub, int val) throws Exception {
+    countStep += 1;
     int midIndex = (lb + ub) / 2;
     int mid = vals[midIndex];
     if (ub < lb) {
@@ -112,6 +117,10 @@ public class SearchUtils {
     } // if/else if/ else
     return rbsHelper(vals, lb, ub, val);
   } // rbsHelper
+
+  public static void printSteps() {
+    System.out.println("Steps stepped: " + countStep);
+  }
 
   // +----------------+----------------------------------------------
   // | Public methods |
@@ -164,4 +173,6 @@ public class SearchUtils {
     //return interativeBinarySearch(vals, val);
     return recursiveBinarySearch(vals, val);
   } // binarySearch
+
+
 } // class SearchUtils

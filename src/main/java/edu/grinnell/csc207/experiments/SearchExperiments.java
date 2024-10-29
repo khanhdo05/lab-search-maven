@@ -61,6 +61,12 @@ public class SearchExperiments {
       pen.println("There are no strings that contains a u.");
     } // try/catch
 
+    int[] large = new int[1000];
+    for (int i = 0; i < 1000; i++) {
+      large[i] = i;
+    }  // for
+    SearchUtils.binarySearch(large, 999);
+    SearchUtils.printSteps();
     pen.close();
   } // main(String[])
 } // class SearchUtils
