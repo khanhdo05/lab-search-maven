@@ -1,5 +1,6 @@
 package edu.grinnell.csc207.util;
 
+import java.io.EOFException;
 import java.util.function.Predicate;
 
 /**
@@ -130,9 +131,32 @@ public class SearchUtils {
    *   values[index] == val
    */
   public static int binarySearch(int[] vals, int val) throws Exception {
-    return 0;
-    // return interativeBinarySearch(vals, val);
+    return interativeBinarySearch(vals, val);
     // return recursiveBinarySearch(vals, val);
   } // binarySearch
+
+  private static int interativeBinarySearch(int[] vals, int val) throws Exception {
+    // low, mid, high
+    // if mid matches -> return mid
+    // if mid > val -> high = mid -1
+    // if mid < val -> low = mid + 1
+
+    int start = 0;
+    int end = vals.length - 1;
+
+    while (start <= end) {
+      int midIndex = (start + end) / 2;
+      int mid = vals[midIndex];
+      if (mid == val) {
+        return midIndex;
+      } else if (mid > val) {
+        end = midIndex - 1;
+      } else {
+        start = midIndex + 1;
+      } // if/else if/ else
+    } // while
+
+    throw new Exception("No match!");
+  } // interativeBinarySearch(int[] vals, int val)
 
 } // class SearchUtils
