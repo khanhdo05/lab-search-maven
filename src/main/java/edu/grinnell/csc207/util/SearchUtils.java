@@ -36,19 +36,19 @@ public class SearchUtils {
    */
   static int iterativeBinarySearch(int[] vals, int val) throws Exception {
     countStep = 0;
-    int start = 0;
-    int end = vals.length - 1;
+    int lb = 0;
+    int ub = vals.length - 1;
 
-    while (start <= end) {
+    while (lb <= ub) {
       countStep += 1;
-      int midIndex = (start + end) / 2;
+      int midIndex = lb + (ub - lb) / 2;
       int mid = vals[midIndex];
       if (mid == val) {
         return midIndex;
       } else if (mid > val) {
-        end = midIndex - 1;
+        ub = midIndex - 1;
       } else {
-        start = midIndex + 1;
+        lb = midIndex + 1;
       } // if/else if/ else
     } // while
 
